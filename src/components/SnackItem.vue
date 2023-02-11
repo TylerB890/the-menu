@@ -1,3 +1,9 @@
+<script setup lang="ts">
+  const props = defineProps<{
+    snacks: string[]
+  }>();
+</script>
+
 <template>
   <div class="container flex justify-center items-center">
     <div
@@ -11,17 +17,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
-
-export default defineComponent({
-  name: "SnackItem",
-  props: {
-    snacks: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
-  },
-});
-</script>

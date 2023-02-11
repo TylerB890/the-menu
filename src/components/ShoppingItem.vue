@@ -1,3 +1,30 @@
+<script setup lang="ts">
+  import {ref, reactive } from "vue";
+  import type {Ref} from "vue";
+  type Item = {
+    id: string,
+    name: string,
+  };
+  const props = defineProps<{
+    item: Item
+  }>();
+
+  const emits = defineEmits<{
+    (e: 'checkedItem', id: string): void
+  }>();
+
+  const striked: Ref<boolean> = ref(false);
+  const styleObject = reactive({
+    textDecoration: "line-through",
+    textDecorationThickness: "2px",
+  });
+
+  function checked() {
+    striked.value = !striked.value;
+    emits("checkedItem", props.item.id);
+  }
+</script>
+
 <template>
   <div class="bg-gray-300 rounded-lg my-1 p-2 w-4/5 md:w-3/5 flex">
     <input
@@ -15,37 +42,3 @@
     >
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref, reactive } from "vue";
-import type { Ref } from "vue";
-
-export default defineComponent({
-  name: "ShoppingItem",
-  emits: ["checkedItem"],
-  props: {
-    item: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props, context) {
-    const striked: Ref<boolean> = ref(false);
-    const styleObject = reactive({
-      textDecoration: "line-through",
-      textDecorationThickness: "2px",
-    });
-
-    function checked() {
-      striked.value = !striked.value;
-      context.emit("checkedItem", props.item.id);
-    }
-
-    return {
-      striked,
-      checked,
-      styleObject,
-    };
-  },
-});
-</script>

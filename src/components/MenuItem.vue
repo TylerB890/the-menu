@@ -1,3 +1,23 @@
+<script setup lang="ts">
+  type MealDay = {
+    date: string,
+    meals: {
+      lunch? : string,
+      lunch_t?: string,
+      lunch_a?: string,
+      lunch_a_office?: string,
+      dinner?: string,
+      dinner_t?: string,
+      dinner_a?: string,
+      dinner_a_office?: string,
+      misc?: string,
+    }
+  }
+  const props = defineProps<{
+    mealDay: MealDay
+  }>()
+</script>
+
 <template>
   <div class="container flex justify-center items-center">
     <div class="bg-green-700 rounded-md mt-4 p-2 w-4/5 lg:w-1/2">
@@ -27,17 +47,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "MenuItem",
-  props: {
-    mealDay: {
-      type: Object,
-      required: true,
-    },
-  },
-});
-</script>
