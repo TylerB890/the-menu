@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  type MealDay = {
+  interface MealDay {
     date: string,
     meals: {
       lunch? : string,

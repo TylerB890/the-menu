@@ -1,10 +1,11 @@
 <script setup lang="ts">
   import {ref, reactive } from "vue";
   import type {Ref} from "vue";
-  type Item = {
-    id: string,
+
+  interface Item {
     name: string,
   };
+
   const props = defineProps<{
     item: Item
   }>();
@@ -21,7 +22,7 @@
 
   function checked() {
     striked.value = !striked.value;
-    emits("checkedItem", props.item.id);
+    emits("checkedItem", props.item.name);
   }
 </script>
 
@@ -30,12 +31,12 @@
     <input
       class="checkbox mr-8 ml-2 w-6 h-6"
       type="checkbox"
-      id="{{item.id}}"
+      id="{{item.name}}"
       @change="checked()"
     />
     <label
       class="my-auto font-bold"
-      :for="item.id"
+      :for="item.name"
       :striked="striked"
       :style="striked ? styleObject : 'none'"
       >{{ item.name }}</label
