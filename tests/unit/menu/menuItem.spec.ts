@@ -28,6 +28,11 @@ describe("MenuItem.vue", () => {
     expect(findText()).toContain("\u{1F469} Lunch: test");
   });
 
+  it("renders the lunch item if present", () => {
+    createComponent({ props: { mealDay: { meals: { lunch: "test" } } } });
+    expect(findText()).toContain("\u{1F46B} Lunch: test");
+  });
+
   /* Office Emoji Tests*/
   it("renders an office emoji if the lunch office item is present", () => {
     createComponent({

@@ -25,6 +25,9 @@
       <p v-if="mealDay.meals.lunch_t">
         &#x1F468; Lunch: {{ mealDay.meals.lunch_t }}
       </p>
+      <p v-if="mealDay.meals.lunch">
+        &#x1F46B; Lunch: {{ mealDay.meals.lunch }}
+      </p>
       <p v-if="mealDay.meals.lunch_a_office">
         &#x1F469; &#x1F3E2; Lunch: {{ mealDay.meals.lunch_a_office }}
       </p>
